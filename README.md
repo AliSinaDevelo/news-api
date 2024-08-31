@@ -16,18 +16,22 @@ A simple Node.js API that interacts with the GNews API to fetch news articles.
     ```bash
     git clone github.com/AliSinaDevelo/news-api.git
     cd news-api
+    ```
 2. Install dependencies
    ```bash
-   npm install
+   npm instal
+   ```
 
 3. Create a .env file in the root directory and add your API key:
-    ```bash
+    ```env
     GNEWS_API_KEY=your_gnews_api_key_here
     PORT =
+    ```
 
 4. Run
     ```bash
     npm run dev
+    ```
 
 ### API Endpoints
 1. Fetch Articles by Keyword
@@ -39,9 +43,10 @@ count (number, optional): The number of articles to return. Default is 10.
 Example: 
     ```bash
     GET /api/articles?query=technology&count=5
+    ```
 
 Response: 
-    ```bash
+    ```json
     [
         {
             "title": "Example Article Title",
@@ -57,6 +62,7 @@ Response:
         }
         ...
     ]
+    ```
 
 2. Fetch Article by Title
 Endpoint: GET /api/articles/title/:title
@@ -66,9 +72,10 @@ title (string): The title of the article to fetch.
 Example:
     ```bash
     GET /api/articles/title/Example%20Article%20Title
+    ```
 
 Response:
-    ```bash
+    ```json
     {
         "title": "Example Article Title",
         "description": "Short description of the article",
@@ -81,6 +88,7 @@ Response:
             "url": "https://source.com"
         }
     }
+    ```
 
 
 3. Fetch Articles by Author
@@ -92,6 +100,7 @@ count (number, optional): The number of articles to return. Default is 10.
 Example:
     ```bash
     GET /api/articles/author?author=John%20Doe&count=3
+    ```
 
 Response:
     ```bash
@@ -110,6 +119,7 @@ Response:
         }
         ...
     ]
+    ```
 
 ### Technologies Used
 - Node.js
