@@ -36,7 +36,10 @@ kubectl apply -f deploy/k8s/service.yaml
 
 Replace `image: news-api:latest` in `deployment.yaml` with your registry reference (for example `ghcr.io/your-org/news-api:v1.2.0`).
 
-Tune `replicas`, resources, and `TRUST_PROXY` for your ingress or service mesh.
+The base deployment intentionally leaves `TRUST_PROXY` unset, so the application does not
+trust client-supplied `X-Forwarded-For` headers by default. Set `TRUST_PROXY=1` only in a
+proxy-specific overlay after verifying that the ingress or service mesh strips and rewrites
+forwarded headers and that exactly one trusted proxy hop reaches the application.
 
 The readiness probe includes a bounded rate-limit Redis `PING` when `REDIS_URL` is set and rate
 limiting is enabled. A Redis outage removes affected pods from Service traffic without failing the
